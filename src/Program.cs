@@ -26,11 +26,35 @@ namespace src
                     Console.Write($"\t{matriz[i, j]}");
                 }
                 Console.Write(Environment.NewLine);
-                if (i == (m / 2) - 1 )
+                if (i == (m / 2) - 1)
                     Console.Write($"Matriz[{m}x{n}] = ");
                 else
-                    Console.Write("\t");
+                {
+                    if (i < m - 1)
+                        Console.Write("\t");
+                }
+
             }
+
+            Console.Write("Digite um número para ser mapeado na matriz: ");
+            int x = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < m; i++)
+                for (int j = 0; j < n; j++)
+                {
+                    if (matriz[i, j] == x)
+                    {
+                        Console.WriteLine(Environment.NewLine + $"Matriz[{i}x{j}] = {matriz[i, j]}");
+                        if (i > 0)
+                            Console.WriteLine($"\tAcima: Matriz[{i - 1}x{j}] = {matriz[i - 1, j]}");
+                        if (i + 1 < matriz.GetLength(0))
+                            Console.WriteLine($"\tAbaixo: Matriz[{i + 1}x{j}] = {matriz[i + 1, j]}");
+                        if (j > 0)
+                            Console.WriteLine($"\tEsquerda: Matriz[{i}x{j - 1}] = {matriz[i, j - 1]}");
+                        if (j + 1 < matriz.GetLength(1))
+                            Console.WriteLine($"\tDireita: Matriz[{i}x{j + 1}] = {matriz[i, j + 1]}");
+                    }
+                }
 
 
 
